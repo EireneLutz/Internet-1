@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/bootstrap.css">
+<style>
+body{
+  background-image: url('imageProje/background.jpg')
+}
+body{
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+</style>
+  <title>Dosya Yönetimi</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse nav navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="dosyaYönetimi.htm">Dosya Yönetimi</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="Kayitlar.htm">Kayıtlar</a></li>
+            <li><a href="Yükle.htm">Yükle</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="giris.htm"><span class="glyphicon glyphicon-log-in"></span> Giriş</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container" style="margin-top:100px;">
+        <div class="row">
+          <div class="col-md-9">
+            <ul id="mansetResim" class="list-group">
+              <li class="list-group-item">
+                <a href="#">
+                  <img src="imageProje/img1.jpg" style="width: 820px;height: 500px">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  <img src="imageProje/img2.jpg" style="width: 820px;height: 500px">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  <img src="imageProje/img3.jpeg" style="width: 820px;height: 500px">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  <img src="imageProje/img4.png" style="width: 820px;height: 500px">
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#">
+                  <img src="imageProje/img5.jpeg" style="width: 820px;height: 500px">
+                </a>
+              </li>
+            </ul>
+    
+            <div class="btn-group" id="butonlar">
+              <button type="button" class="btn btn-primary">1</button>
+              <button type="button" class="btn btn-primary">2</button>
+              <button type="button" class="btn btn-primary">3</button>
+              <button type="button" class="btn btn-primary">4</button>
+              <button type="button" class="btn btn-primary">5</button>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+      <script src="js/jquery-3.2.1.js"></script>
+      <script>
+        $(function () {
+          var s = 0;
+          $("#mansetResim li").hide();
+          $("#mansetResim li:first").show();
+          $("#mansetYazi li:first").addClass("active");
+          $("#butonlar button:first").removeClass();
+          $("#butonlar button:first").addClass("btn btn-danger");
+          $("#butonlar button").hover(function () {
+            var index = $(this).index();
+            $.haber(index);
+          });
+          setInterval(function () {
+            s++;
+            if (s > 4) { s = 0; }
+            $.haber(s);
+          }, 3000);
+          $.haber = function (index) {
+            $("#mansetResim li").hide();
+            $("#mansetResim li:eq(" + index + ")").show();
+            $("#mansetYazi li").removeClass("active");
+            $("#mansetYazi li:eq(" + index + ")").addClass("active");
+            $("#butonlar button").removeClass();
+            $("#butonlar button").addClass("btn btn-primary");
+            $("#butonlar button:eq(" + index + ")").removeClass();
+            $("#butonlar button:eq(" + index + ")").addClass("btn btn-danger");
+          };
+        });
+      </script>
+</body>
+</html>
